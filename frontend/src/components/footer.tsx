@@ -105,7 +105,7 @@ export function Footer() {
           </div>
         </div>
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">© 2025 LifeTrack. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">© 2025 geekeddhub.io. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="text-muted-foreground hover:text-foreground transition text-sm">
               Twitter
