@@ -9,9 +9,14 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
     networks:
       - geekeddhub-network
     restart: unless-stopped
+    # Add this to see what's happening
+    stdin_open: true
+    tty: true
 
   backend:
     build: ./backend

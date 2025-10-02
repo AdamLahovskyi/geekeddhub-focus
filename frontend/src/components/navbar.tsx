@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
 import { useState } from "react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import GradientText from './GradientText'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +14,14 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
+            <GradientText
+              colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+              animationSpeed={10}
+              showBorder={false}
+              className="custom-class"
+            >
             <span className="text-2xl font-bold">geekeddhub.io</span>
+            </GradientText>
           </div>
 
           <div className="hidden md:flex items-center gap-8">

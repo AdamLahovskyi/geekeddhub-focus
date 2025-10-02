@@ -41,8 +41,8 @@ export function Stats() {
 
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold mb-2">
-              <CountUp to={1} duration={2} />
-              M+
+              <CountUp to={100000} duration={2} />
+              +
             </div>
             <p className="text-muted-foreground">Goals Achieved</p>
           </div>

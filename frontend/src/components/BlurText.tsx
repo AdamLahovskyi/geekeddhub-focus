@@ -27,7 +27,7 @@ const buildKeyframes = (from: Record<string, any>, steps: Record<string, any>[])
 
 const BlurText: React.FC<BlurTextProps> = ({
   text = '',
-  delay = 200,
+  delay = 25,
   className = '',
   animateBy = 'words',
   direction = 'top',
