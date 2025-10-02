@@ -1,0 +1,76 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: geekeddhub-frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - geekeddhub-network
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    container_name: geekeddhub-backend
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - MONGODB_URI=mongodb://mongodb:27017/geekeddhub
+      - MINIO_ENDPOINT=minio
+      - MINIO_PORT=9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_BUCKET=geekeddhub
+    networks:
+      - geekeddhub-network
+    depends_on:
+      - mongodb
+      - minio
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:7.0
+    container_name: geekeddhub-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=geekeddhub
+    networks:
+      - geekeddhub-network
+    restart: unless-stopped
+
+  minio:
+    image: minio/minio:latest
+    container_name: geekeddhub-minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - geekeddhub-network
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+    driver: local
+  minio_data:
+    driver: local
+
+networks:
+  geekeddhub-network:
+    driver: bridge
