@@ -3,6 +3,8 @@ import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import Home from "./pages/home";
 import NotFound from "./pages/notfound";
+import SignIn from "./pages/signin";
+import SignUp from "./pages/signup";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/login" element={<SignIn />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
