@@ -19,7 +19,7 @@ export function Hero() {
         </h1>
           <BlurText
             text="The complete platform to track your progress, build better habits, and achieve your goals. Join thousands who are already transforming their lives."
-            className="block text-center text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-pretty leading-relaxed"
+            className="block justify-center text-center text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-pretty leading-relaxed"
           />
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="text-base px-8">

@@ -3,8 +3,10 @@
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
 import { useState } from "react"
+import { Link } from "react-router"
 import { ThemeToggle } from "@/components/theme-toggle"
 import GradientText from './GradientText'
+import { HashLink } from 'react-router-hash-link';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,28 +22,28 @@ export function Navbar() {
               showBorder={false}
               className="custom-class"
             >
-            <span className="text-2xl font-bold">geekeddhub.io</span>
+            <Link to="/" className="text-2xl font-bold">geekeddhub.io</Link>
             </GradientText>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-muted-foreground hover:text-foreground transition">
-              Features
-            </a>
-            <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition">
-              Testimonials
-            </a>
-            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition">
-              Pricing
-            </a>
+          <HashLink smooth to="/#features" className="text-muted-foreground hover:text-foreground transition">
+            Features
+          </HashLink>
+          <HashLink smooth to="/#testimonials" className="text-muted-foreground hover:text-foreground transition">
+            Testimonials
+          </HashLink>
+          <Link to="/explore" className="text-muted-foreground hover:text-foreground transition"> Explore </Link>
           </div>
-
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
-            <Button variant="ghost">Log in</Button>
-            <Button>Get Started</Button>
+            <Button variant="ghost" asChild>
+              <Link to="/login">Log in</Link>
+            </Button>
+            <Button asChild>
+              <Link to="/sign-up">Get Started</Link>
+            </Button>
           </div>
-
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-md text-foreground hover:bg-accent"
@@ -52,23 +54,23 @@ export function Navbar() {
 
         {isOpen && (
           <div className="md:hidden py-4 space-y-4">
-            <a href="#features" className="block text-muted-foreground hover:text-foreground transition">
-              Features
-            </a>
-            <a href="#testimonials" className="block text-muted-foreground hover:text-foreground transition">
-              Testimonials
-            </a>
-            <a href="#pricing" className="block text-muted-foreground hover:text-foreground transition">
-              Pricing
-            </a>
+          <HashLink smooth to="/#features" className="flex text-muted-foreground hover:text-foreground transition">
+            Features
+          </HashLink>
+          <HashLink smooth to="/#testimonials" className="flex text-muted-foreground hover:text-foreground transition">
+            Testimonials
+          </HashLink>
+          <Link to="/explore" className="flex text-muted-foreground hover:text-foreground transition"> Explore </Link>
             <div className="flex flex-col gap-2 pt-4">
               <div className="flex justify-center pb-2">
                 <ThemeToggle />
               </div>
-              <Button variant="ghost" className="w-full">
-                Log in
-              </Button>
-              <Button className="w-full">Get Started</Button>
+            <Button variant="ghost" className="w-full" asChild>
+              <Link to="/login">Log in</Link>
+            </Button>
+            <Button className="w-full" asChild>
+              <Link to="/get-started">Get Started</Link>
+            </Button>
             </div>
           </div>
         )}

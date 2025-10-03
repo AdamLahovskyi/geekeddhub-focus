@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ScrambledText from "@/components/ScrambledText";
+import FuzzyText from "@/components/FuzzyText";
 
 const NotFound = () => {
   return (
@@ -13,7 +14,6 @@ const NotFound = () => {
       >
         404
       </ScrambledText>
-
       <ScrambledText
         className="text-2xl md:text-3xl font-semibold mb-6"
         radius={300}
